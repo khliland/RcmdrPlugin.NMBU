@@ -1,0 +1,25 @@
+# import(stats, Rcmdr, pls, mixlm)
+importFrom(tcltk,tkbutton,ttkcombobox, ttknotebook, tkadd, tkselect)
+import(Rcmdr)
+import(xtable)
+importFrom(pls,plsr)
+importFrom(MASS,lda)
+importFrom(mixlm,AnovaMix)
+importFrom("grDevices", "gray", "rgb")
+importFrom("phia", "testInteractions")
+importFrom("graphics", "abline", "axis", "contour", "lines", "par",
+           "plot", "points", "segments", "strheight", "strwidth",
+           "text")
+importFrom("stats", "anova", "coef", "confint", "delete.response",
+           "dexp", "dgamma", "dgeom", "dlnorm", "dlogis", "dnbinom",
+           "dnorm", "dpois", "dt", "dweibull", "formula", "lm",
+           "logLik", "median", "model.frame", "model.matrix",
+           "na.omit", "pchisq", "predict", "qnorm", "quantile",
+           "rnorm", "sd", "terms", "update", "var", "vcov", "window")
+importFrom("utils", "help", "install.packages", "packageDescription",
+           "read.table", "vignette", "unzip", "write.table", "zip")
+
+exportPattern("^[^\\.]") # Export all except .functions
+ 
+S3method(confint, mvr)
+S3method(xtable, numSummary)
