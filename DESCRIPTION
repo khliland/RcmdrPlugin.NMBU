@@ -1,8 +1,8 @@
 Package: RcmdrPlugin.NMBU
 Type: Package
 Title: R Commander Plug-in for University Level Applied Statistics
-Version: 1.8.11
-Date: 2019-09-09
+Version: 1.8.12
+Date: 2020-10-28
 Authors@R: c(person("Kristian Hovde", "Liland", role = c("aut","cre"), email="kristian.liland@nmbu.no"),
  person("Solve", "Sæbø", role=c("aut")))
 Author: Kristian Hovde Liland [aut, cre],
@@ -41,4 +41,4 @@ License: GPL (>= 2)
 LazyLoad: yes
 LazyData: yes
 RcmdrModels: mvr, lda, qda, prcomp, mer, rsm, lmm
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

@@ -21,7 +21,7 @@ plsP <- function() activeModelP() && any(class(get(ActiveModel()))[1] == c('mvr'
 daP <- function() activeModelP() && (any(class(get(ActiveModel()))[1] == c('lda')) || any(class(get(ActiveModel()))[1] == c('qda')))
 contP <- function(){ # Check if model contains continuous variable
   .activeModel <- ActiveModel()
-  effects <- fparse(formula(.activeModel))
+  effects <- fparse(eval(parse(text=paste("formula(",.activeModel,")",sep=""))))
   for(i in 1:length(effects)){
     nu <- eval(parse(text=paste("class(", ActiveDataSet(), '$', effects[[i]],")")))
     if(any(nu%in%c("numeric","integer"))){
