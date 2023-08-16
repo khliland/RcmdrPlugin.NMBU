@@ -15,7 +15,7 @@ DA.scores <- function(object=NULL){
 	if(is.null(object)){
 		try(eval(parse(text=paste("object <- ", activeModel(), sep=""))))
 	}
-	if(class(object) != "lda"){
+	if(!inherits(object, "lda")){ # if(class(object) != "lda"){
 		stop("Only available for linear discriminant analysis (LDA)")
 	}
 	data.name <- object$call$data
@@ -50,7 +50,7 @@ DA.scores <- function(object=NULL){
 	}
 	
 # Common classification for two classes
-	if(g == 2 && class(object) == "lda"){
+	if(g == 2 && inherits(object, "lda")){ # if(g == 2 && class(object) == "lda"){
 		beta0 <- -0.5*t(the.means[,1]-the.means[,2]) %*% solve(S) %*% (the.means[,1]+the.means[,2]) - log(object$prior[2]/object$prior[1])
 		beta  <- t(the.means[,1]-the.means[,2]) %*% solve(S)
 		cat('Classify as ', groups[1], ' if \n', beta0, sep='')
@@ -62,7 +62,7 @@ DA.scores <- function(object=NULL){
 	
 # Group-wise scores
 	cat("Group-wise linear discriminant scores")
-	if(class(object) == "lda"){
+	if(inherits(object, "lda")){ # if(class(object) == "lda"){
 		for(i in 1:g){
 			beta0 <- log(object$prior[i]) - 0.5*t(the.means[,i])%*%solve(S)%*%the.means[,i]
 			beta  <- the.means[,i] %*% solve(S)
@@ -321,7 +321,7 @@ xtable.numSummary <- function(x, caption = NULL, label = NULL, align = NULL, dig
 deviance_tests <- function(){
 	tmp.mod <- eval(parse(text=ActiveModel()))
 	if(formula(tmp.mod)[[3]] != 1){
-		if(any(class(tmp.mod)=="polr")){
+	  if(inherits(tmp.mod, "polr")){ # if(any(class(tmp.mod)=="polr")){
 			if(any(names(tmp.mod$call)=="weights")){
 				saturated.m <- eval(parse(text = paste("multinom(", formula(tmp.mod)[[2]], "~", formula(tmp.mod)[[3]], ", weights=", tmp.mod$call['weights'][[1]], ", data=", ActiveDataSet(), ",Hess=TRUE)", sep="")))
 			} else {

@@ -235,7 +235,7 @@ plotDA <- function(DAobject=NULL, regions=TRUE, contours=FALSE, resolution=100){
 		}
 	}
 	if(contours==TRUE){ # Computations for contour plotting
-		if(class(DAobject)=='lda'){
+	  if(inherits(DAobject, 'lda')){ # if(class(DAobject)=='lda'){
 			for(i in 1:g){
 				probs[[i]] <- matrix(dmvnorm(coords,the.means[,i],S),resolution,resolution)
 			}

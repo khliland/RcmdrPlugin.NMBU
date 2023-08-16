@@ -1,6 +1,11 @@
 NEWS file for package RcmdrPlugin.NMBU
 R Commander Plug-in for University Level Applied Statistics.
-Kristian Hovde Liland and Solve Sæbø, Norway
+Kristian Hovde Liland and Solve SÃ¦bÃ¸, Norway
+
+##### Version 1.8.14
+Date: 16 August 2023
+>> Changed from latin1 to UTF-8 encoding.
+>> Changed class(.) == . to inherits(.,.).
 
 ##### Version 1.8.13
 Date: 28 December 2021

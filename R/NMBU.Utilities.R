@@ -801,14 +801,22 @@ auto.import <- function(){
   D <- dim(Dataset[[1]])
   numbers <- matrix(0,ncol=4,nrow=D[2])
   for(i in 1:D[2]){
-    if(class(Dataset[[1]][,i])=="integer" || class(Dataset[[1]][,i])=="numeric")
+    if(inherits(Dataset[[1]][,i], c("integer","numeric")))
       numbers[i,1] <- 1
-    if(class(Dataset[[2]][,i])=="integer" || class(Dataset[[2]][,i])=="numeric")
+    if(inherits(Dataset[[2]][,i], c("integer","numeric")))
       numbers[i,2] <- 1
-    if(class(Dataset[[3]][,i])=="integer" || class(Dataset[[3]][,i])=="numeric")
+    if(inherits(Dataset[[3]][,i], c("integer","numeric")))
       numbers[i,3] <- 1
-    if(class(Dataset[[4]][,i])=="integer" || class(Dataset[[4]][,i])=="numeric")
+    if(inherits(Dataset[[4]][,i], c("integer","numeric")))
       numbers[i,4] <- 1
+#     if(class(Dataset[[1]][,i])=="integer" || class(Dataset[[1]][,i])=="numeric")
+#       numbers[i,1] <- 1
+#     if(class(Dataset[[2]][,i])=="integer" || class(Dataset[[2]][,i])=="numeric")
+#       numbers[i,2] <- 1
+#     if(class(Dataset[[3]][,i])=="integer" || class(Dataset[[3]][,i])=="numeric")
+#       numbers[i,3] <- 1
+#     if(class(Dataset[[4]][,i])=="integer" || class(Dataset[[4]][,i])=="numeric")
+#       numbers[i,4] <- 1
   }
   best <- which.max(apply(numbers,2,sum))
   Dataset <- Dataset[[best]]

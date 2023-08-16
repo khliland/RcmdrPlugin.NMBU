@@ -54,7 +54,7 @@ meanCenter <- function(){
     }
     remove(.Z, envir=.GlobalEnv)
     logger("remove(.Z)")
-    if (class(result)[1] !=  "try-error") activeDataSet(.activeDataSet, flushModel=FALSE)
+    if (!inherits(result, "try-error")) activeDataSet(.activeDataSet, flushModel=FALSE) # if (class(result)[1] !=  "try-error") activeDataSet(.activeDataSet, flushModel=FALSE)
     tkfocus(CommanderWindow())
   }
   # Set up GUI
@@ -192,7 +192,7 @@ newDataSetOSX <- function() {
     command <- "edit(data.frame(var1=0))"
     result <- justDoIt(command)
     result <- as.data.frame(lapply(result, function(x) if (is.character(x)) factor(x) else x))
-    if (class(result)[1] !=  "try-error"){ 
+    if(!inherits(result, "try-error")){ # if (class(result)[1] !=  "try-error"){ 
 #			assign(dsnameValue, result, envir=.GlobalEnv)
 # 			logger(paste(dsnameValue, "<-", command))
 	  doItAndPrint(paste(dsnameValue, "<-", command))
@@ -337,7 +337,7 @@ onExportE <- function() doItAndPrint("toClipboard(popOutput(), dec='.', rcmdr=TR
 onExportN <- function() doItAndPrint("toClipboard(popOutput(), dec=',', rcmdr=TRUE)")
 toClipboard <- function(object, dec=".", sep="\t", quote=FALSE, rcmdr=FALSE, ...){
 	x <- try(xtable(object),silent = TRUE)
-	if(class(x)[1] == "xtable"){
+	if(inherits(x, "xtable")){ # if(class(x)[1] == "xtable"){
 		df <- as.data.frame(x)
 		write.table(df,file="clipboard", sep=sep, dec=dec, quote=quote, ...)
 		cat("Successfully copied data to the clipboard.\nCheck alignment of headers after pasting.\n")

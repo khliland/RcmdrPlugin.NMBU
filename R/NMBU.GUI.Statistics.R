@@ -1106,7 +1106,7 @@ linearModelNMBU <- function(){
   tkgrid(helpButton, sticky="w")
   
   currentModel <- if (!is.null(.activeModel))
-    class(get(.activeModel, envir=.GlobalEnv))[1] == "lm" || class(get(.activeModel, envir=.GlobalEnv))[1] == "lmm" || class(get(.activeModel, envir=.GlobalEnv))[1] == "mer"
+    inherits(get(.activeModel, envir=.GlobalEnv), c("lm", "lmm", "mer")) #class(get(.activeModel, envir=.GlobalEnv))[1] == "lm" || class(get(.activeModel, envir=.GlobalEnv))[1] == "lmm" || class(get(.activeModel, envir=.GlobalEnv))[1] == "mer"
   else FALSE
   if (currentModel) {
     currentFields <- formulaFields2(get(.activeModel, envir=.GlobalEnv))
@@ -1309,7 +1309,7 @@ generalizedLinearModelNMBU <- function(){
   factorsButton <- tkbutton(groupsFrame, textvariable=.factorsLabel, command=onFactors, borderwidth=3)
   
   currentModel <- if (!is.null(.activeModel))
-    class(get(.activeModel, envir=.GlobalEnv))[1] == "glm"
+    inherits(get(.activeModel, envir=.GlobalEnv), "glm") # class(get(.activeModel, envir=.GlobalEnv))[1] == "glm"
   else FALSE
   if (currentModel) {
     currentFields <- formulaFields(get(.activeModel, envir=.GlobalEnv), glm=TRUE)
@@ -1499,7 +1499,7 @@ multinomialLogitModelNMBU <- function(){
   .activeModel <- ActiveModel()
   .activeDataSet <- ActiveDataSet()
   currentModel <- if (!is.null(.activeModel))
-    class(get(.activeModel, envir=.GlobalEnv))[1] == "multinom"
+    inherits(get(.activeModel, envir=.GlobalEnv), "multinom") # class(get(.activeModel, envir=.GlobalEnv))[1] == "multinom"
 		else FALSE
   if (currentModel) {
     currentFields <- formulaFields(get(.activeModel, envir=.GlobalEnv))
@@ -1624,7 +1624,7 @@ ordinalRegressionModelNMBU <- function(){
   .activeModel <- ActiveModel()
   .activeDataSet <- ActiveDataSet()
   currentModel <- if (!is.null(.activeModel))
-    class(get(.activeModel, envir=.GlobalEnv))[1] == "polr"
+    inherits(get(.activeModel, envir=.GlobalEnv), "polr") # class(get(.activeModel, envir=.GlobalEnv))[1] == "polr"
   else FALSE
   if (currentModel) {
     currentFields <- formulaFields(get(.activeModel, envir=.GlobalEnv))
