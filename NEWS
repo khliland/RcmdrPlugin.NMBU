@@ -2,6 +2,10 @@ NEWS file for package RcmdrPlugin.NMBU
 R Commander Plug-in for University Level Applied Statistics.
 Kristian Hovde Liland and Solve Sæbø, Norway
 
+##### Version 1.8.15
+Date: 11 March 2024
+>> Removed usage of is.R() for compatibility with R >= 4.4.0.
+
 ##### Version 1.8.14
 Date: 16 August 2023
 >> Changed from latin1 to UTF-8 encoding.

@@ -625,31 +625,31 @@ CIplot <- function (lm.object, xlim = range(data[, x.name]), newdata, conf.level
         type = "l", lty = tpgsl$lty[4], col = tpgsl$col[4], lwd = tpgsl$lwd[4])
     panel.xyplot(x = newdata[[1]], y = newfit$pi.fit[, "upper"], 
         type = "l", lty = tpgsl$lty[4], col = tpgsl$col[4], lwd = tpgsl$lwd[4])
-    if.R(s = {
-        axis(1, at = mean(x), tck = -0.03, labels = FALSE)
-        axis(1, at = mean(x), ticks = FALSE, labels = "xbar", 
-            line = 0.9)
-        axis(3, at = mean(x), tck = -0.03, labels = FALSE)
-        axis(3, at = mean(x), ticks = FALSE, labels = "xbar")
-    }, r = {
-        cpl <- current.panel.limits()
-        pushViewport(viewport(xscale = cpl$xlim, yscale = cpl$ylim, 
-            clip = "off"))
-        panel.axis("bottom", at = mean(x), tck = 1.5, labels = FALSE)
-        panel.axis("bottom", at = mean(x), ticks = FALSE, labels = expression(bar(x)), 
-            rot = 0, outside = TRUE)
-        panel.axis("top", at = mean(x), tck = 1.5, labels = FALSE)
-        panel.axis("top", at = mean(x), ticks = FALSE, labels = expression(bar(x)), 
-            rot = 0, outside = TRUE)
-        upViewport()
-    })
+#    if.R(s = {
+#        axis(1, at = mean(x), tck = -0.03, labels = FALSE)
+#        axis(1, at = mean(x), ticks = FALSE, labels = "xbar", 
+#            line = 0.9)
+#        axis(3, at = mean(x), tck = -0.03, labels = FALSE)
+#        axis(3, at = mean(x), ticks = FALSE, labels = "xbar")
+#    }, r = {
+    cpl <- current.panel.limits()
+    pushViewport(viewport(xscale = cpl$xlim, yscale = cpl$ylim, 
+                          clip = "off"))
+    panel.axis("bottom", at = mean(x), tck = 1.5, labels = FALSE)
+    panel.axis("bottom", at = mean(x), ticks = FALSE, labels = expression(bar(x)), 
+               rot = 0, outside = TRUE)
+    panel.axis("top", at = mean(x), tck = 1.5, labels = FALSE)
+    panel.axis("top", at = mean(x), ticks = FALSE, labels = expression(bar(x)), 
+               rot = 0, outside = TRUE)
+    upViewport()
+#    })
 }
-if.R <- function (r, s) 
-{
-    if (exists("is.R") && is.function(is.R) && is.R()) 
-        r
-    else s
-}
+#if.R <- function (r, s) 
+#{
+#    if (exists("is.R") && is.function(is.R) && is.R()) 
+#        r
+#    else s
+#}
 
 
 #####################################
